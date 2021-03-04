@@ -8,8 +8,10 @@ public class BlockSpawner : MonoBehaviour
     GameObject Cube = default;
 
     Vector3 blockPos = Vector3.zero;
+
     [SerializeField]
     Texture2D mySprite = default;
+
     [SerializeField]
     float spriteSize = 0;
 
