@@ -38,9 +38,9 @@ public class CubeSpawners : MonoBehaviour
 
                 GameObject cubeObj = Instantiate(Cube, transform);
                 cubeObj.transform.localPosition = blockPos;
-                
-
-                cubeObj.GetComponent<Renderer>().material.color = Random.ColorHSV(0f, 1f, 1f, 1f, 0.5f, 1f);
+             
+                    cubeObj.GetComponent<Renderer>().material.color =
+                        Random.ColorHSV(0f, 1f, 1f, 1f, 0.5f, 1f);
                 cubeObj.transform.localScale = Vector3.one * spriteSize;
             }
 

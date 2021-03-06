@@ -15,19 +15,30 @@ public class BlockSpawner : MonoBehaviour
     [SerializeField]
     float spriteSize = 0;
 
+    int sumFillCubes = 0;
+
+    FillCounter fillCounter = default;
+
     private void OnEnable()
     {
+        fillCounter = fillCounter = GameObject.FindGameObjectWithTag("GameController").
+            GetComponent<FillCounter>();
+
+       
+
         for (int x = 0; x < mySprite.height; x++)
         {
             for (int y = 0; y < mySprite.width; y++)
             {
                 Color color = mySprite.GetPixel(x, y);
-                print("b");
+
                 if (color.a == 0)
                 {
+                    sumFillCubes++;
                     continue;
+                    
                 }
-
+                
                 blockPos = new Vector3(
                     spriteSize * (x - (mySprite.width * .5f)),
                     spriteSize * .5f,
@@ -35,11 +46,11 @@ public class BlockSpawner : MonoBehaviour
 
                 GameObject cubeObj = Instantiate(Cube, transform);
                 cubeObj.transform.localPosition = blockPos;
-
                 cubeObj.GetComponent<Renderer>().material.color = color;
                 cubeObj.transform.localScale = Vector3.one * spriteSize;
             }
 
         }
+        fillCounter.sumCubes = mySprite.height* mySprite.width - sumFillCubes;
     }
 }
